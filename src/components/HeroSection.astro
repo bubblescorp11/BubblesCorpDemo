@@ -1,0 +1,152 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  backgroundImage?: string;
+}
+
+const { title, subtitle, description, ctaText = 'Get Started', ctaLink = '/contact', backgroundImage } = Astro.props;
+---
+
+<section class="hero" style={backgroundImage ? `background-image: url('${backgroundImage}')` : ''}>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="container">
+      {subtitle && <p class="hero-subtitle">{subtitle}</p>}
+      <h1 class="hero-title">{title}</h1>
+      {description && <p class="hero-description">{description}</p>}
+      {ctaText && ctaLink && (
+        <div class="hero-cta">
+          <a href={ctaLink} class="cta-button">
+            {ctaText}
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(99, 102, 241, 0.1) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  .hero-subtitle {
+    color: var(--color-primary);
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero-title {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-lg);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: slideInDown var(--animation-duration-slow) var(--animation-timing);
+  }
+
+  .hero-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--line-height-relaxed);
+    animation: slideInUp var(--animation-duration-slow) var(--animation-timing);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    transition: all var(--animation-duration-base) var(--animation-timing);
+    box-shadow: var(--shadow-lg);
+    animation: scaleIn var(--animation-duration-slow) var(--animation-timing);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px rgba(99, 102, 241, 0.3);
+  }
+
+  .cta-button:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .arrow {
+    display: inline-block;
+    transition: transform var(--animation-duration-base) var(--animation-timing);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 500px;
+    }
+
+    .hero-title {
+      font-size: var(--text-3xl);
+    }
+
+    .hero-description {
+      font-size: var(--text-base);
+    }
+
+    .cta-button {
+      padding: var(--spacing-md) var(--spacing-lg);
+      font-size: var(--text-base);
+    }
+  }
+</style>

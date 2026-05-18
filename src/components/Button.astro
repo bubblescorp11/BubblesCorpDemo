@@ -1,0 +1,82 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { href = '#', variant = 'primary', size = 'md', class: className = '' } = Astro.props;
+---
+
+{href ? (
+  <a {href} class={`button button-${variant} button-${size} ${className}`}>
+    <slot />
+  </a>
+) : (
+  <button class={`button button-${variant} button-${size} ${className}`}>
+    <slot />
+  </button>
+)}
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-lg);
+    border: none;
+    cursor: pointer;
+    transition: all var(--animation-duration-base) var(--animation-timing);
+    text-decoration: none;
+  }
+
+  .button-sm {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--text-sm);
+  }
+
+  .button-md {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--text-base);
+  }
+
+  .button-lg {
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    font-size: var(--text-lg);
+  }
+
+  .button-primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+  }
+
+  .button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .button-secondary {
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+    border: 2px solid var(--color-bg-tertiary);
+  }
+
+  .button-secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .button-outline {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .button-outline:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+</style>

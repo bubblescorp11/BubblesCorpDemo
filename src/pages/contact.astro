@@ -1,0 +1,294 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ContactForm from '../components/ContactForm.tsx';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="Contact BubbleCorp - Get in Touch" description="Contact BubbleCorp for SAP Group Reporting services. Reach out to our team for a consultation.">
+  <Navbar currentPath="/contact" />
+
+  <HeroSection 
+    title="Get in Touch"
+    subtitle="Contact Us"
+    description="We'd love to hear from you. Let's discuss how we can help transform your SAP strategy."
+  />
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Contact Information</h2>
+          <p>Reach out to us through any of these channels. We're here to help!</p>
+
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div class="info-content">
+              <h3>Email</h3>
+              <p>
+                <a href="mailto:info@bubblecorp.com">info@bubblecorp.com</a>
+              </p>
+              <p class="info-subtext">Sales: <a href="mailto:sales@bubblecorp.com">sales@bubblecorp.com</a></p>
+              <p class="info-subtext">Support: <a href="mailto:support@bubblecorp.com">support@bubblecorp.com</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-content">
+              <h3>Phone</h3>
+              <p>
+                <a href="tel:+1-555-123-4567">+1 (555) 123-4567</a>
+              </p>
+              <p class="info-subtext">Monday - Friday: 9 AM - 6 PM EST</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <h3>Office</h3>
+              <p>123 Financial District Blvd<br />New York, NY 10001</p>
+              <p class="info-subtext">By appointment</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">🕐</div>
+            <div class="info-content">
+              <h3>Business Hours</h3>
+              <p>
+                Monday - Friday: 9:00 AM - 6:00 PM<br />
+                Saturday & Sunday: Closed
+              </p>
+              <p class="info-subtext">24/7 emergency support available</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="form-wrapper">
+          <h2>Send us a Message</h2>
+          <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+          <ContactForm client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Common questions about our services</p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>What is SAP Group Reporting?</h3>
+          <p>
+            SAP Group Reporting is a solution for financial consolidation and reporting that helps organizations consolidate data from multiple subsidiaries and entities to create unified financial reports compliant with IFRS, GAAP, and other accounting standards.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How long does implementation typically take?</h3>
+          <p>
+            Implementation timelines vary based on complexity and scope. Typically, a standard SAP Group Reporting implementation takes 3-6 months. We'll provide a detailed timeline during the planning phase.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Do you offer post-implementation support?</h3>
+          <p>
+            Yes, we provide comprehensive post-implementation support including system monitoring, maintenance, performance optimization, and user support to ensure your systems run smoothly.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can you help migrate from legacy systems?</h3>
+          <p>
+            Absolutely. We have extensive experience migrating from legacy systems to modern SAP solutions. Data migration, system integration, and change management are all part of our expertise.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What about training for our team?</h3>
+          <p>
+            We provide comprehensive training programs tailored to your team's needs, including functional training, technical training, and ongoing support workshops to ensure successful adoption.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is your solution scalable?</h3>
+          <p>
+            Yes, our solutions are designed to scale with your business. Whether you're a mid-sized organization or enterprise, we can tailor solutions that grow with your needs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</MainLayout>
+
+<style>
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  .contact-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+  }
+
+  .contact-info h2,
+  .form-wrapper h2 {
+    margin-bottom: var(--spacing-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .contact-info > p,
+  .form-wrapper > p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .info-item {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid var(--color-bg-tertiary);
+  }
+
+  .info-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .info-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .info-content h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .info-content p {
+    color: var(--color-text-secondary);
+    margin: var(--spacing-sm) 0;
+  }
+
+  .info-content a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--animation-duration-base) var(--animation-timing);
+  }
+
+  .info-content a:hover {
+    color: var(--color-accent);
+  }
+
+  .info-subtext {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary) !important;
+  }
+
+  .form-wrapper {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
+    border: 1px solid var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+  }
+
+  .faq-section {
+    padding: var(--spacing-3xl) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--spacing-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-header p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-lg);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+  }
+
+  .faq-item {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all var(--animation-duration-base) var(--animation-timing);
+  }
+
+  .faq-item:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+  }
+
+  .faq-item h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+  }
+
+  .faq-item p {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section,
+    .faq-section {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-2xl);
+    }
+
+    .form-wrapper {
+      padding: var(--spacing-lg);
+    }
+
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

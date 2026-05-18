@@ -1,0 +1,402 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="SAP Services - BubbleCorp" description="Comprehensive SAP Group Reporting services including implementation, optimization, training, and support.">
+  <Navbar currentPath="/services" />
+
+  <HeroSection 
+    title="Our SAP Services"
+    subtitle="Complete Solutions"
+    description="End-to-end SAP Group Reporting solutions tailored to your business requirements"
+  />
+
+  <!-- Services Detail Section -->
+  <section class="services-detail">
+    <div class="container">
+      <div class="section-header">
+        <h2>What We Offer</h2>
+        <p>Comprehensive SAP solutions for every aspect of your financial operations</p>
+      </div>
+
+      <div class="services-list">
+        <!-- Service 1 -->
+        <div class="service-item">
+          <div class="service-number">01</div>
+          <div class="service-content">
+            <h3>SAP Group Reporting Implementation</h3>
+            <p>
+              End-to-end implementation of SAP Group Reporting systems tailored to your organization's unique requirements. Our expert team handles everything from system configuration, data migration, and integration to final deployment.
+            </p>
+            <ul class="service-features">
+              <li>✓ System design and configuration</li>
+              <li>✓ Data migration and cleansing</li>
+              <li>✓ Integration with existing systems</li>
+              <li>✓ UAT and go-live support</li>
+              <li>✓ Comprehensive documentation</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-item">
+          <div class="service-number">02</div>
+          <div class="service-content">
+            <h3>Performance Optimization & Support</h3>
+            <p>
+              Maximize the efficiency and performance of your SAP systems. We provide continuous monitoring, proactive maintenance, and optimization strategies to ensure your systems run at peak performance.
+            </p>
+            <ul class="service-features">
+              <li>✓ Performance monitoring and tuning</li>
+              <li>✓ Database optimization</li>
+              <li>✓ System health checks</li>
+              <li>✓ Proactive issue resolution</li>
+              <li>✓ Regular system updates</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-item">
+          <div class="service-number">03</div>
+          <div class="service-content">
+            <h3>Advanced Reporting & Analytics</h3>
+            <p>
+              Transform your data into actionable insights with advanced reporting and analytics solutions. We create custom dashboards, reports, and analytics that provide deep visibility into your financial operations.
+            </p>
+            <ul class="service-features">
+              <li>✓ Custom report development</li>
+              <li>✓ Real-time dashboards</li>
+              <li>✓ Advanced analytics</li>
+              <li>✓ BI integration</li>
+              <li>✓ Predictive modeling</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-item">
+          <div class="service-number">04</div>
+          <div class="service-content">
+            <h3>Training & Knowledge Transfer</h3>
+            <p>
+              Empower your team with comprehensive training and knowledge transfer programs. We develop customized training materials and sessions to ensure your staff can effectively manage and optimize your SAP systems.
+            </p>
+            <ul class="service-features">
+              <li>✓ Functional training</li>
+              <li>✓ Technical training</li>
+              <li>✓ End-user support</li>
+              <li>✓ Documentation and knowledge base</li>
+              <li>✓ Ongoing support workshops</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-item">
+          <div class="service-number">05</div>
+          <div class="service-content">
+            <h3>Financial Consolidation Solutions</h3>
+            <p>
+              Streamline your financial consolidation processes with sophisticated SAP solutions. We implement tools and processes that simplify consolidation, improve accuracy, and accelerate close procedures.
+            </p>
+            <ul class="service-features">
+              <li>✓ Multi-entity consolidation</li>
+              <li>✓ Intercompany elimination</li>
+              <li>✓ Currency conversion</li>
+              <li>✓ Automated workflows</li>
+              <li>✓ Compliance reporting</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-item">
+          <div class="service-number">06</div>
+          <div class="service-content">
+            <h3>Managed Services & Support</h3>
+            <p>
+              Outsource your SAP system management to our experienced team. We provide 24/7 monitoring, maintenance, and support to ensure your systems are always available and performing optimally.
+            </p>
+            <ul class="service-features">
+              <li>✓ 24/7 system monitoring</li>
+              <li>✓ Incident management</li>
+              <li>✓ Change management</li>
+              <li>✓ Security patching</li>
+              <li>✓ Disaster recovery planning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Approach</h2>
+        <p>A proven methodology for successful implementations</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Assessment</h4>
+            <p>We conduct a thorough assessment of your current systems and requirements.</p>
+          </div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Planning</h4>
+            <p>Develop a comprehensive project plan and implementation roadmap.</p>
+          </div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Implementation</h4>
+            <p>Execute the implementation with rigorous quality assurance.</p>
+          </div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Deployment</h4>
+            <p>Go-live support and system stabilization in production.</p>
+          </div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Support</h4>
+            <p>Ongoing monitoring, maintenance, and optimization support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Optimize Your SAP Systems?</h2>
+        <p>Contact our team to discuss which services are right for your organization.</p>
+        <Button href="/contact" variant="primary" size="lg">Request a Consultation</Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</MainLayout>
+
+<style>
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--spacing-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-header p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-lg);
+  }
+
+  .services-detail {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+  }
+
+  .service-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-2xl);
+    align-items: flex-start;
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
+    border: 1px solid var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    transition: all var(--animation-duration-base) var(--animation-timing);
+  }
+
+  .service-item:hover {
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+  }
+
+  .service-number {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    flex-shrink: 0;
+  }
+
+  .service-content h3 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .service-content p {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .service-features {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin: 0;
+  }
+
+  .service-features li {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .process-section {
+    padding: var(--spacing-3xl) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+  }
+
+  .process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+
+  .step {
+    flex: 0 1 180px;
+    text-align: center;
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-lg);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .step-content h4 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .step-content p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+
+  .arrow {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .cta-section {
+    padding: var(--spacing-3xl) 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+  }
+
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cta-content p {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  @media (max-width: 768px) {
+    .services-detail,
+    .process-section,
+    .cta-section {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .service-item {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .service-number {
+      font-size: 2rem;
+    }
+
+    .service-features {
+      grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .arrow {
+      transform: rotate(90deg);
+    }
+
+    .step {
+      flex: 1 1 100%;
+      max-width: 300px;
+    }
+  }
+</style>

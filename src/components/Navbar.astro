@@ -1,0 +1,229 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a href="/">
+        <span class="brand-icon">💼</span>
+        <span class="brand-text">BubbleCorp</span>
+      </a>
+    </div>
+    
+    <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <ul class="navbar-menu" id="navbar-menu">
+      {navLinks.map(link => (
+        <li>
+          <a 
+            href={link.href}
+            class={currentPath === link.href ? 'active' : ''}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="cta-button-wrapper">
+        <a href="/contact" class="cta-button">Get Started</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-bg-tertiary);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    backdrop-filter: blur(10px);
+  }
+
+  .navbar-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-brand a {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color var(--animation-duration-base) var(--animation-timing);
+  }
+
+  .navbar-brand a:hover {
+    color: var(--color-primary);
+  }
+
+  .brand-icon {
+    font-size: 1.5rem;
+  }
+
+  .navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .navbar-menu a {
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    transition: all var(--animation-duration-base) var(--animation-timing);
+    position: relative;
+  }
+
+  .navbar-menu a:hover,
+  .navbar-menu a.active {
+    color: var(--color-primary);
+  }
+
+  .navbar-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width var(--animation-duration-base) var(--animation-timing);
+  }
+
+  .navbar-menu a:hover::after,
+  .navbar-menu a.active::after {
+    width: 100%;
+  }
+
+  .cta-button-wrapper {
+    margin-left: var(--spacing-lg);
+  }
+
+  .cta-button {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    padding: var(--spacing-sm) var(--spacing-lg) !important;
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-semibold);
+    transition: all var(--animation-duration-base) var(--animation-timing);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+  }
+
+  .navbar-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text);
+    border-radius: var(--radius-full);
+    transition: all var(--animation-duration-base) var(--animation-timing);
+  }
+
+  @media (max-width: 768px) {
+    .navbar-toggle {
+      display: flex;
+    }
+
+    .navbar-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      padding: var(--spacing-lg);
+      background: var(--color-bg-secondary);
+      border-bottom: 1px solid var(--color-bg-tertiary);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--animation-duration-base) var(--animation-timing);
+    }
+
+    .navbar-menu.active {
+      max-height: 400px;
+    }
+
+    .navbar-menu a {
+      display: block;
+    }
+
+    .cta-button-wrapper {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .cta-button {
+      display: block;
+      text-align: center;
+    }
+
+    .navbar-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(10px, 10px);
+    }
+
+    .navbar-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .navbar-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('navbar-toggle');
+  const menu = document.getElementById('navbar-menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      toggle?.classList.toggle('active');
+      menu?.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        toggle?.classList.remove('active');
+        menu?.classList.remove('active');
+      });
+    });
+  }
+</script>

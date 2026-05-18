@@ -1,0 +1,154 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Button from '../components/Button.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="Page Not Found - BubbleCorp" description="The page you're looking for could not be found.">
+  <Navbar />
+
+  <section class="not-found-section">
+    <div class="container">
+      <div class="not-found-content">
+        <div class="error-code">404</div>
+        <h1>Page Not Found</h1>
+        <p>Sorry, the page you're looking for doesn't exist or has been moved.</p>
+        <div class="button-group">
+          <Button href="/" variant="primary" size="lg">Back to Home</Button>
+          <Button href="/contact" variant="secondary" size="lg">Contact Support</Button>
+        </div>
+      </div>
+
+      <div class="suggestions">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</MainLayout>
+
+<style>
+  .not-found-section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-3xl) var(--spacing-md);
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .not-found-content {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .error-code {
+    font-size: 8rem;
+    font-weight: var(--font-weight-bold);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-md);
+    line-height: 1;
+  }
+
+  .not-found-content h1 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .not-found-content p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-lg);
+    margin-bottom: var(--spacing-2xl);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button-group {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .suggestions {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
+    border: 1px solid var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .suggestions h2 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  .suggestions ul {
+    list-style: none;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .suggestions li {
+    margin: 0;
+  }
+
+  .suggestions a {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: all var(--animation-duration-base) var(--animation-timing);
+  }
+
+  .suggestions a:hover {
+    background: var(--color-bg-tertiary);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .not-found-section {
+      min-height: auto;
+      padding: var(--spacing-2xl) var(--spacing-md);
+    }
+
+    .error-code {
+      font-size: 5rem;
+    }
+
+    .not-found-content h1 {
+      font-size: var(--text-2xl);
+    }
+
+    .button-group {
+      flex-direction: column;
+    }
+
+    .suggestions ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
