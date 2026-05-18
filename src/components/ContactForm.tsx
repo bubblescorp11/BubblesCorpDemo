@@ -43,14 +43,16 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="contact-form-container">
-      {submitted ? (
-        <div className="success-message">
-          <h3>✓ Thank You!</h3>
-          <p>Your message has been sent successfully. We'll get back to you soon!</p>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="contact-form">
+    <>
+      <style>{styles}</style>
+      <div className="contact-form-container">
+        {submitted ? (
+          <div className="success-message">
+            <h3>✓ Thank You!</h3>
+            <p>Your message has been sent successfully. We'll get back to you soon!</p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-group">
             <label htmlFor="name">Name *</label>
             <input
@@ -119,6 +121,7 @@ export default function ContactForm() {
         </form>
       )}
     </div>
+    </>
   );
 }
 
@@ -183,19 +186,70 @@ const styles = `
     border-radius: var(--radius-lg);
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
-    transition: all var(--animation-duration-base) var(--animation-timing);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: var(--shadow-md);
     font-size: var(--text-base);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    letter-spacing: 0.5px;
+  }
+
+  .submit-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
   }
 
   .submit-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+  }
+
+  .submit-button:active:not(:disabled) {
+    transform: translateY(-1px) scale(0.98);
+  }
+
+  .submit-button:hover:not(:disabled)::before {
+    left: 100%;
   }
 
   .submit-button:disabled {
-    opacity: 0.7;
+    opacity: 0.75;
     cursor: not-allowed;
+    animation: pulse-load 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-load {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes spin-dots {
+    0%, 100% {
+      content: '•';
+    }
+    25% {
+      content: '••';
+    }
+    50% {
+      content: '•••';
+    }
+    75% {
+      content: '••';
+    }
   }
 
   .success-message {

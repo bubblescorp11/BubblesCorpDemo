@@ -6,17 +6,17 @@ interface Props {
 const { currentPath = '/' } = Astro.props;
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '/BubblesCorpDemo/' },
+  { label: 'About', href: '/BubblesCorpDemo/about' },
+  { label: 'Services', href: '/BubblesCorpDemo/services' },
+  { label: 'Contact', href: '/BubblesCorpDemo/contact' },
 ];
 ---
 
 <nav class="navbar">
   <div class="navbar-container">
     <div class="navbar-brand">
-      <a href="/">
+      <a href="/BubblesCorpDemo/">
         <span class="brand-icon">💼</span>
         <span class="brand-text">BubbleCorp</span>
       </a>
@@ -40,7 +40,7 @@ const navLinks = [
         </li>
       ))}
       <li class="cta-button-wrapper">
-        <a href="/contact" class="cta-button">Get Started</a>
+        <a href="/BubblesCorpDemo/contact" class="cta-button">Get Started</a>
       </li>
     </ul>
   </div>

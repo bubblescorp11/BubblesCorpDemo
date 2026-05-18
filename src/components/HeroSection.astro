@@ -8,7 +8,7 @@ interface Props {
   backgroundImage?: string;
 }
 
-const { title, subtitle, description, ctaText = 'Get Started', ctaLink = '/contact', backgroundImage } = Astro.props;
+const { title, subtitle, description, ctaText = 'Get Started', ctaLink = '/BubblesCorpDemo/contact', backgroundImage } = Astro.props;
 ---
 
 <section class="hero" style={backgroundImage ? `background-image: url('${backgroundImage}')` : ''}>
@@ -33,7 +33,7 @@ const { title, subtitle, description, ctaText = 'Get Started', ctaLink = '/conta
 <style>
   .hero {
     position: relative;
-    min-height: 600px;
+    min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,7 +133,7 @@ const { title, subtitle, description, ctaText = 'Get Started', ctaLink = '/conta
 
   @media (max-width: 768px) {
     .hero {
-      min-height: 500px;
+      min-height: 300px;
     }
 
     .hero-title {
