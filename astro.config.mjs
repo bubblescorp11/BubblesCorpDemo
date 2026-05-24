@@ -1,17 +1,20 @@
+import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 
-export default {
-  // GitHub Pages configuration
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
   site: 'https://yourgithubusername.github.io',
+
   base: '/BubblesCorpDemo',
-  
   integrations: [react()],
-  
   output: 'static',
-  
+
   vite: {
     ssr: {
       external: ['react', 'react-dom']
-    }
+    },
+
+    plugins: [tailwindcss()]
   }
-};
+});

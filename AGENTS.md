@@ -13,19 +13,22 @@ A modern, static financial services website for BubbleCorp offering SAP Group Re
 
 ### Core Framework
 - **Astro 6.x+** — Static site generator, partial hydration with React islands
-- **React 19.x** — Used only for interactive components (ContactForm) via Astro `client:load` directive
-- **Node.js 24.x+** — Runtime for build and development
+- **React 18.x** — Used for interactive components (ContactForm, AnimatedCard, AnimatedHeroSection, AnimatedSection, AnimatedStats) via Astro `client:load` directive
+- **Node.js 26.x+** — Runtime for build and development
 
 ### Styling & Design
 - **CSS3** (custom properties/CSS variables for theming)
-- **Tailwind CSS** (optional utility classes for rapid component development)
+- **Tailwind CSS v4** (integrated via `@astrojs/tailwind` + `@tailwindcss/vite` plugin)
 - **CSS Modules** (component-scoped styles for isolation)
 
 **Design System**:
 - **Color Palette**: Modern/vibrant with gradients and bold accent colors
-- **Animation**: Moderate (scroll animations, page transitions, hover effects)
+- **Animation**: Moderate (scroll animations via framer-motion, page transitions, hover effects)
 - **Typography**: Clean, modern sans-serif (e.g., Inter, Poppins)
 - **Breakpoints**: 320px (mobile), 768px (tablet), 1024px+ (desktop)
+
+### Animation Library
+- **framer-motion 11.x** — React animation library for scroll-triggered animations, entrance effects, and interactive transitions
 
 ### Deployment & Hosting
 - **GitHub Pages** — Static hosting, free, auto-deployed via GitHub Actions
@@ -39,7 +42,7 @@ A modern, static financial services website for BubbleCorp offering SAP Group Re
 - **Validation**: Required fields, email format, phone format
 
 ### Development Tools
-- **npm/pnpm** — Package manager
+- **npm** — Package manager
 - **ESLint** — Linting and code quality
 - **Prettier** — Code formatting
 - **Astro CLI** — Local dev server (`npm run dev`), build (`npm run build`)
@@ -67,21 +70,24 @@ BubblesCorpDemo/
 │   ├── components/
 │   │   ├── Navbar.astro
 │   │   ├── Footer.astro
-│   │   ├── ContactForm.jsx        # React island (client:load)
+│   │   ├── ContactForm.tsx        # React island (client:load)
+│   │   ├── AnimatedCard.tsx       # React animated card component
+│   │   ├── AnimatedHeroSection.tsx # React animated hero section
+│   │   ├── AnimatedSection.tsx    # React animated section wrapper
+│   │   ├── AnimatedStats.tsx      # React animated statistics display
 │   │   ├── HeroSection.astro
 │   │   ├── ServiceCard.astro
 │   │   ├── Button.astro
-│   │   ├── Card.astro
-│   │   └── Section.astro
+│   │   └── Card.astro
 │   ├── layouts/
 │   │   └── MainLayout.astro       # Shared layout wrapper
 │   ├── styles/
 │   │   ├── globals.css            # Global styles, CSS variables, animations
-│   │   └── components.css         # Reusable component styles
+│   │   └── global.css             # Additional global styles
 │   └── assets/
-│       ├── images/
-│       ├── icons/
-│       └── fonts/
+│       ├── images/                # (to be populated)
+│       ├── icons/                 # (to be populated)
+│       └── fonts/                 # (to be populated)
 ├── public/
 │   ├── robots.txt
 │   └── sitemap.xml
@@ -99,13 +105,13 @@ BubblesCorpDemo/
 
 ### 1. **Astro Component Best Practices**
 - **Static-first**: Write `.astro` components by default (HTML, CSS, no JavaScript overhead)
-- **React Islands**: Use React (`.jsx`/`.tsx`) **only** for interactive features (forms, modals, carousels)
+- **React Islands**: Use React (`.tsx`) **only** for interactive features (forms, animations, modals, carousels)
 - **Client Directives**: Mark React components with appropriate Astro directives:
-  - `client:load` — Load immediately (for ContactForm)
+  - `client:load` — Load immediately (for ContactForm and animated components)
   - `client:idle` — Load when browser is idle
   - `client:visible` — Load when component enters viewport
   - `client:media` — Load based on media query
-- **Props Pattern**: Pass data to components via props; use `interface Props {}` in `.astro` for type safety
+- **Props Pattern**: Pass data to components via props; use TypeScript interfaces for type safety
 
 ### 2. **Styling Standards**
 - **Design Tokens**: All colors, spacing, fonts defined in `src/styles/globals.css` as CSS custom properties
@@ -121,9 +127,9 @@ BubblesCorpDemo/
     --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
   }
   ```
-- **Component Isolation**: Use CSS Modules (`.module.css`) or scoped `<style>` blocks for component styles
+- **Component Isolation**: Use scoped `<style>` blocks for component styles
 - **Responsive Design**: Mobile-first approach; use CSS media queries or Tailwind breakpoints
-- **Animations**: Leverage CSS transitions for page transitions, fade-ins, and hover states; prefer GPU-accelerated properties (`opacity`, `transform`, `scale`)
+- **Animations**: Use framer-motion for React component animations; use CSS transitions for Astro component hover states; prefer GPU-accelerated properties (`opacity`, `transform`, `scale`)
 
 ### 3. **Page & Content Management**
 - **Content Structure**: Keep content separate from presentation; use YAML frontmatter or data files for reusable content
@@ -138,6 +144,7 @@ BubblesCorpDemo/
   - ARIA labels where needed
   - Keyboard navigation support
   - Alt text for all images
+  - Respect `prefers-reduced-motion` for animation components
 
 ### 4. **Contact Form Standards**
 - **Service Integration**: Use Formspree (free tier, email-based) or EmailJS (client-side, more control)
@@ -158,7 +165,7 @@ BubblesCorpDemo/
   - Build Astro project (`npm run build`)
   - Deploy to `gh-pages` branch
 - **Build Output**: Astro generates static HTML/CSS/JS in `dist/` folder; no server runtime needed
-- **Environment Variables**: Store sensitive data (API keys, email endpoints) in GitHub Secrets, reference via `process.env` in build time
+- **Environment Variables**: Store sensitive data (API keys, email endpoints) in GitHub Secrets, reference via `import.meta.env` at build time
 
 ### 6. **Performance Targets**
 - **Lighthouse Score**: ≥90 on Home, About, Services pages
@@ -200,13 +207,13 @@ BubblesCorpDemo/
 
 | Category | Tool/Library | Version | Purpose |
 |----------|-------------|---------|---------|
-| Framework | Astro | 4.x+ | Static site generator |
-| Interactivity | React | 18.x | Interactive components (forms) |
-| Styling | CSS3 + Tailwind | latest | Theming and component styles |
+| Framework | Astro | 6.x+ | Static site generator |
+| Interactivity | React + framer-motion | 18.x, 11.x | Interactive components, scroll animations |
+| Styling | CSS3 + Tailwind v4 | latest | Theming and component styles |
 | Deployment | GitHub Pages + Actions | — | Hosting and CI/CD |
 | Forms | Formspree/EmailJS | — | Contact form handling |
 | Dev Tools | ESLint, Prettier | latest | Code quality and formatting |
-| Package Manager | npm/pnpm | latest | Dependency management |
+| Package Manager | npm | latest | Dependency management |
 
 ---
 
@@ -219,7 +226,7 @@ BubblesCorpDemo/
 npm install
 
 # Development
-npm run dev          # Start local dev server (http://localhost:3000)
+npm run dev          # Start local dev server (http://localhost:4321)
 npm run lint         # Check code quality
 npm run format       # Auto-format code
 
@@ -235,6 +242,6 @@ npm run preview      # Preview production build locally
 
 ## Contact & Future Updates
 
-- **Last Updated**: May 18, 2026
+- **Last Updated**: May 24, 2026
 - **Project Lead**: BubbleCorp Development Team
 - **Questions/Issues**: Create GitHub Issues in the repository

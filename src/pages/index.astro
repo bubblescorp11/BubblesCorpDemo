@@ -1,26 +1,43 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
-import HeroSection from '../components/HeroSection.astro';
+import AnimatedHeroSection from '../components/AnimatedHeroSection.tsx';
 import ServiceCard from '../components/ServiceCard.astro';
 import Button from '../components/Button.astro';
 import Card from '../components/Card.astro';
 import Footer from '../components/Footer.astro';
+import AnimatedCard from '../components/AnimatedCard.tsx';
+import AnimatedStats from '../components/AnimatedStats.tsx';
+import AnimatedSection from '../components/AnimatedSection.tsx';
 ---
 
 <MainLayout title="BubbleCorp - SAP Group Reporting Services" description="Professional SAP Group Reporting services for financial excellence and business intelligence.">
-  <Navbar currentPath="/" />
+  <Navbar currentPath="/BubblesCorpDemo/" />
   
-  <HeroSection 
+  <AnimatedHeroSection 
+    client:load
     title="Transform Your SAP Group Reporting"
     subtitle="Professional SAP Solutions"
     description="Comprehensive SAP Group Reporting services tailored to optimize your financial reporting, consolidation, and business intelligence."
     ctaText="Schedule a Demo"
     ctaLink="/BubblesCorpDemo/contact"
+    backgroundImage="https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=1200&h=600&fit=crop"
   />
 
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <AnimatedStats client:load stats={[
+        { value: 500, label: "Expert SAP Professionals", suffix: "+" },
+        { value: 98, label: "Client Satisfaction Rate", suffix: "%" },
+        { value: 15, label: "Years of Excellence", suffix: "+" },
+        { value: 100, label: "Successful Implementations", suffix: "+" }
+      ]} />
+    </div>
+  </section>
+
   <!-- Why Choose Us Section -->
-  <section class="why-choose-us">
+  <AnimatedSection client:load variant="glass" className="why-choose-us">
     <div class="container">
       <div class="section-header">
         <h2>Why Choose BubbleCorp?</h2>
@@ -28,47 +45,53 @@ import Footer from '../components/Footer.astro';
       </div>
 
       <div class="features-grid">
-        <Card>
-          <div class="feature-icon">🎯</div>
-          <h3>Expert Implementation</h3>
-          <p>Leveraging years of SAP expertise to deliver seamless implementations tailored to your business needs.</p>
-        </Card>
+        <AnimatedCard client:load
+          icon="🎯"
+          title="Expert Implementation"
+          description="Leveraging years of SAP expertise to deliver seamless implementations tailored to your business needs."
+          delay={0}
+        />
 
-        <Card>
-          <div class="feature-icon">⚡</div>
-          <h3>Fast Deployment</h3>
-          <p>Accelerated timelines without compromising quality. Get your SAP systems running efficiently.</p>
-        </Card>
+        <AnimatedCard client:load
+          icon="⚡"
+          title="Fast Deployment"
+          description="Accelerated timelines without compromising quality. Get your SAP systems running efficiently."
+          delay={0.1}
+        />
 
-        <Card>
-          <div class="feature-icon">🛡️</div>
-          <h3>Enterprise Security</h3>
-          <p>Robust security protocols ensuring your financial data is protected with industry best practices.</p>
-        </Card>
+        <AnimatedCard client:load
+          icon="🛡️"
+          title="Enterprise Security"
+          description="Robust security protocols ensuring your financial data is protected with industry best practices."
+          delay={0.2}
+        />
 
-        <Card>
-          <div class="feature-icon">🤝</div>
-          <h3>24/7 Support</h3>
-          <p>Dedicated support team available round-the-clock to ensure your systems run smoothly.</p>
-        </Card>
+        <AnimatedCard client:load
+          icon="🤝"
+          title="24/7 Support"
+          description="Dedicated support team available round-the-clock to ensure your systems run smoothly."
+          delay={0.3}
+        />
 
-        <Card>
-          <div class="feature-icon">📈</div>
-          <h3>Performance Optimization</h3>
-          <p>Continuous monitoring and optimization to maximize your SAP system performance and ROI.</p>
-        </Card>
+        <AnimatedCard client:load
+          icon="📈"
+          title="Performance Optimization"
+          description="Continuous monitoring and optimization to maximize your SAP system performance and ROI."
+          delay={0.4}
+        />
 
-        <Card>
-          <div class="feature-icon">🎓</div>
-          <h3>Training & Knowledge Transfer</h3>
-          <p>Comprehensive training programs ensuring your team masters the systems and tools.</p>
-        </Card>
+        <AnimatedCard client:load
+          icon="🎓"
+          title="Training & Knowledge Transfer"
+          description="Comprehensive training programs ensuring your team masters the systems and tools."
+          delay={0.5}
+        />
       </div>
     </div>
-  </section>
+  </AnimatedSection>
 
   <!-- Services Preview Section -->
-  <section class="services-preview">
+  <AnimatedSection client:load variant="default" className="services-preview">
     <div class="container">
       <div class="section-header">
         <h2>Our Services</h2>
@@ -102,10 +125,10 @@ import Footer from '../components/Footer.astro';
         <Button href="/BubblesCorpDemo/services" variant="primary" size="lg">Explore All Services</Button>
       </div>
     </div>
-  </section>
+  </AnimatedSection>
 
   <!-- CTA Section -->
-  <section class="cta-section">
+  <AnimatedSection client:load variant="glass" className="cta-section">
     <div class="container">
       <div class="cta-content">
         <h2>Ready to Transform Your SAP Strategy?</h2>
@@ -113,14 +136,20 @@ import Footer from '../components/Footer.astro';
         <Button href="/BubblesCorpDemo/contact" variant="primary" size="lg">Get Started Today</Button>
       </div>
     </div>
-  </section>
+  </AnimatedSection>
 
   <Footer />
 </MainLayout>
 
 <style>
+  .stats-section {
+    padding: var(--spacing-3xl) var(--spacing-md);
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+  }
+
   .why-choose-us {
     padding: var(--spacing-3xl) var(--spacing-md);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%);
   }
 
   .features-grid {
@@ -129,14 +158,8 @@ import Footer from '../components/Footer.astro';
     gap: var(--spacing-xl);
   }
 
-  .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-md);
-  }
-
   .services-preview {
     padding: var(--spacing-3xl) var(--spacing-md);
-    background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
   }
 
   .services-grid {
@@ -152,7 +175,7 @@ import Footer from '../components/Footer.astro';
 
   .cta-section {
     padding: var(--spacing-3xl) var(--spacing-md);
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(30, 58, 138, 0.08) 100%);
   }
 
   .cta-content {
@@ -163,6 +186,7 @@ import Footer from '../components/Footer.astro';
 
   .cta-content h2 {
     margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
   }
 
   .cta-content p {
@@ -183,10 +207,8 @@ import Footer from '../components/Footer.astro';
 
   .section-header h2 {
     margin-bottom: var(--spacing-md);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-accent);
+    font-size: var(--text-4xl);
   }
 
   .section-header p {
@@ -206,6 +228,10 @@ import Footer from '../components/Footer.astro';
     .features-grid,
     .services-grid {
       grid-template-columns: 1fr;
+    }
+
+    .section-header h2 {
+      font-size: var(--text-2xl);
     }
   }
 </style>

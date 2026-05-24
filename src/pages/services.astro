@@ -15,6 +15,7 @@ import Footer from '../components/Footer.astro';
     subtitle="Complete Solutions"
     description="End-to-end SAP Group Reporting solutions tailored to your business requirements"
     ctaText=""
+    backgroundImage="https://images.unsplash.com/photo-1600267175161-629346dd7293?w=1200&h=600&fit=crop"
   />
 
   <!-- Services Detail Section -->
@@ -225,10 +226,8 @@ import Footer from '../components/Footer.astro';
 
   .section-header h2 {
     margin-bottom: var(--spacing-md);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-accent);
+    font-size: var(--text-4xl);
   }
 
   .section-header p {
@@ -238,6 +237,7 @@ import Footer from '../components/Footer.astro';
 
   .services-detail {
     padding: var(--spacing-3xl) 0;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%);
   }
 
   .services-list {
@@ -252,24 +252,24 @@ import Footer from '../components/Footer.astro';
     gap: var(--spacing-2xl);
     align-items: flex-start;
     padding: var(--spacing-xl);
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
-    border: 1px solid var(--color-bg-tertiary);
+    backdrop-filter: blur(var(--glass-blur));
+    background: rgba(255, 255, 255, var(--glass-opacity));
+    border: var(--glass-border);
     border-radius: var(--radius-lg);
-    transition: all var(--animation-duration-base) var(--animation-timing);
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .service-item:hover {
-    border-color: var(--color-primary);
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+    background: rgba(255, 255, 255, calc(var(--glass-opacity) + 0.05));
+    border-color: rgba(6, 182, 212, 0.3);
+    box-shadow: var(--glass-shadow-hover);
   }
 
   .service-number {
     font-size: 2.5rem;
     font-weight: var(--font-weight-bold);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-accent);
     flex-shrink: 0;
   }
 
@@ -298,7 +298,6 @@ import Footer from '../components/Footer.astro';
 
   .process-section {
     padding: var(--spacing-3xl) 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
   }
 
   .process-steps {
@@ -320,7 +319,7 @@ import Footer from '../components/Footer.astro';
     justify-content: center;
     width: 50px;
     height: 50px;
-    background: var(--gradient-primary);
+    background: var(--color-accent);
     color: white;
     border-radius: var(--radius-full);
     font-weight: var(--font-weight-bold);
@@ -340,14 +339,14 @@ import Footer from '../components/Footer.astro';
   }
 
   .arrow {
-    color: var(--color-primary);
+    color: var(--color-accent);
     font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
   }
 
   .cta-section {
     padding: var(--spacing-3xl) 0;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(30, 58, 138, 0.08) 100%);
   }
 
   .cta-content {
@@ -358,6 +357,7 @@ import Footer from '../components/Footer.astro';
 
   .cta-content h2 {
     margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
   }
 
   .cta-content p {
