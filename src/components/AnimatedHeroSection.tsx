@@ -52,7 +52,7 @@ export const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
 
       {/* Content Container */}
       <motion.div
-        className="relative z-10 container mx-auto px-6 text-center"
+        className="relative z-10 container text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

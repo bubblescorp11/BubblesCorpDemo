@@ -32,14 +32,14 @@ export const ScrollRevealSection: React.FC<ScrollRevealSectionProps> = ({
   return (
     <motion.section
       id={id}
-      className={`py-16 md:py-24 ${className}`}
+      className={`py-20 md:py-28 ${className}`}
       style={variantStyles[variant]}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
-      <div className="container mx-auto px-6">{children}</div>
+      <div className="page-container">{children}</div>
     </motion.section>
   );
 };

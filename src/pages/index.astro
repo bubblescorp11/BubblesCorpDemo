@@ -7,7 +7,7 @@ import ScrollRevealSection from '../components/react/ScrollRevealSection.tsx';
 import GlowCard from '../components/react/GlowCard.tsx';
 import AnimatedStats from '../components/AnimatedStats.tsx';
 import MagneticButton from '../components/react/MagneticButton.tsx';
-import { iconTarget, iconZap, iconShield, iconHandshake, iconTrending, iconGrad, iconWrench, iconSettings, iconBarChart, iconBook, iconArrow } from '../components/react/icons';
+import { iconTarget, iconZap, iconShield, iconHandshake, iconTrending, iconGrad, iconWrench, iconSettings, iconBarChart, iconBook } from '../components/react/icons';
 ---
 
 <MainLayout title="BubbleCorp - SAP Group Reporting Services" description="Professional SAP Group Reporting services for financial excellence and business intelligence.">
@@ -20,11 +20,11 @@ import { iconTarget, iconZap, iconShield, iconHandshake, iconTrending, iconGrad,
     description="Comprehensive SAP Group Reporting services tailored to optimize your financial reporting, consolidation, and business intelligence."
     ctaText="Schedule a Demo"
     ctaLink="/BubblesCorpDemo/contact"
-    backgroundImage="https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=1200&h=600&fit=crop"
+    backgroundImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop"
   />
 
-  <section class="py-16 md:py-24 section-gradient">
-    <div class="container mx-auto px-6">
+  <section class="py-20 md:py-28 section-gradient">
+    <div class="page-container">
       <AnimatedStats client:load stats={[
         { value: 500, label: "Expert SAP Professionals", suffix: "+" },
         { value: 98, label: "Client Satisfaction Rate", suffix: "%" },
@@ -39,7 +39,7 @@ import { iconTarget, iconZap, iconShield, iconHandshake, iconTrending, iconGrad,
       <h2 class="text-4xl font-bold mb-4" style="color: var(--color-text);">Why Choose BubbleCorp?</h2>
       <p class="text-lg max-w-xl mx-auto" style="color: var(--color-text-secondary);">Industry expertise, proven solutions, and dedicated support</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <GlowCard client:visible icon={iconTarget} title="Expert Implementation" description="Leveraging years of SAP expertise to deliver seamless implementations tailored to your business needs." delay={0} />
       <GlowCard client:visible icon={iconZap} title="Fast Deployment" description="Accelerated timelines without compromising quality. Get your SAP systems running efficiently." delay={0.1} />
       <GlowCard client:visible icon={iconShield} title="Enterprise Security" description="Robust security protocols ensuring your financial data is protected with industry best practices." delay={0.2} />
@@ -54,7 +54,7 @@ import { iconTarget, iconZap, iconShield, iconHandshake, iconTrending, iconGrad,
       <h2 class="text-4xl font-bold mb-4" style="color: var(--color-text);">Our Services</h2>
       <p class="text-lg max-w-xl mx-auto" style="color: var(--color-text-secondary);">Comprehensive SAP Group Reporting solutions for every stage of your journey</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
       <GlowCard client:visible icon={iconWrench} title="Implementation" description="End-to-end SAP Group Reporting implementation with best practices, data migration, and system configuration." delay={0} />
       <GlowCard client:visible icon={iconSettings} title="Optimization" description="Performance tuning, process optimization, and system enhancement to maximize your investment." delay={0.1} />
       <GlowCard client:visible icon={iconBarChart} title="Reporting Solutions" description="Advanced reporting, consolidation, and analytics solutions for better business insights." delay={0.2} />
@@ -63,7 +63,7 @@ import { iconTarget, iconZap, iconShield, iconHandshake, iconTrending, iconGrad,
     <div class="text-center">
       <MagneticButton client:load href="/BubblesCorpDemo/services" className="btn-gradient">
         Explore All Services
-        {iconArrow}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </MagneticButton>
     </div>
   </ScrollRevealSection>
@@ -74,7 +74,7 @@ import { iconTarget, iconZap, iconShield, iconHandshake, iconTrending, iconGrad,
       <p class="text-lg mb-8" style="color: var(--color-text-secondary);">Let's discuss how BubbleCorp can help you achieve your business goals with advanced SAP solutions.</p>
       <MagneticButton client:load href="/BubblesCorpDemo/contact" className="btn-gradient">
         Get Started Today
-        {iconArrow}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </MagneticButton>
     </div>
   </ScrollRevealSection>

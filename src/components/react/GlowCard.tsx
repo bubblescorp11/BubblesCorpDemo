@@ -39,7 +39,7 @@ export const GlowCard: React.FC<GlowCardProps> = ({
   return (
     <motion.div
       ref={cardRef}
-      className={`relative group p-8 rounded-2xl transition-shadow duration-300 ${className}`}
+      className={`relative group p-10 rounded-2xl transition-shadow duration-300 ${className}`}
       style={{
         background: 'rgba(17, 26, 46, 0.7)',
         backdropFilter: 'blur(12px)',
@@ -63,9 +63,9 @@ export const GlowCard: React.FC<GlowCardProps> = ({
         }}
       />
 
-      <div className="relative z-10">
+      <div className="relative z-10 text-center">
         {icon && (
-          <div className="mb-5 flex items-center justify-center w-12 h-12 rounded-xl" style={{ background: 'rgba(56, 189, 248, 0.1)', color: 'var(--color-accent)' }}>
+          <div className="mb-5 mx-auto flex items-center justify-center w-12 h-12 rounded-xl" style={{ background: 'rgba(56, 189, 248, 0.1)', color: 'var(--color-accent)' }}>
             {icon}
           </div>
         )}

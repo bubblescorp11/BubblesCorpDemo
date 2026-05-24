@@ -7,7 +7,7 @@ import ScrollRevealSection from '../components/react/ScrollRevealSection.tsx';
 import GlowCard from '../components/react/GlowCard.tsx';
 import TimelineStep from '../components/react/TimelineStep.tsx';
 import MagneticButton from '../components/react/MagneticButton.tsx';
-import { iconWrench, iconSettings, iconBarChart, iconBook, iconArrow } from '../components/react/icons';
+import { iconWrench, iconSettings, iconBarChart, iconBook } from '../components/react/icons';
 ---
 
 <MainLayout title="SAP Services - BubbleCorp" description="Comprehensive SAP Group Reporting services including implementation, optimization, training, and support.">
@@ -26,7 +26,7 @@ import { iconWrench, iconSettings, iconBarChart, iconBook, iconArrow } from '../
       <h2 class="text-4xl font-bold mb-4" style="color: var(--color-text);">What We Offer</h2>
       <p class="text-lg max-w-xl mx-auto" style="color: var(--color-text-secondary);">Comprehensive SAP solutions for every aspect of your financial operations</p>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <GlowCard client:visible icon={iconWrench} title="SAP Group Reporting Implementation" description="End-to-end implementation of SAP Group Reporting systems tailored to your organization's unique requirements. Our expert team handles system configuration, data migration, and integration." delay={0} />
       <GlowCard client:visible icon={iconSettings} title="Performance Optimization & Support" description="Maximize the efficiency and performance of your SAP systems. We provide continuous monitoring, proactive maintenance, and optimization strategies." delay={0.1} />
       <GlowCard client:visible icon={iconBarChart} title="Advanced Reporting & Analytics" description="Transform your data into actionable insights with advanced reporting and analytics solutions. Custom dashboards and deep financial visibility." delay={0.2} />
@@ -41,7 +41,7 @@ import { iconWrench, iconSettings, iconBarChart, iconBook, iconArrow } from '../
       <h2 class="text-4xl font-bold mb-4" style="color: var(--color-text);">Our Approach</h2>
       <p class="text-lg max-w-xl mx-auto" style="color: var(--color-text-secondary);">A proven methodology for successful implementations</p>
     </div>
-    <div class="max-w-lg mx-auto">
+    <div class="max-w-2xl mx-auto">
       <TimelineStep client:visible step={1} title="Assessment" description="We conduct a thorough assessment of your current systems and requirements." delay={0} />
       <TimelineStep client:visible step={2} title="Planning" description="Develop a comprehensive project plan and implementation roadmap." delay={0.1} />
       <TimelineStep client:visible step={3} title="Implementation" description="Execute the implementation with rigorous quality assurance." delay={0.2} />
@@ -54,9 +54,9 @@ import { iconWrench, iconSettings, iconBarChart, iconBook, iconArrow } from '../
     <div class="text-center max-w-2xl mx-auto">
       <h2 class="text-4xl font-bold mb-4" style="color: var(--color-text);">Ready to Optimize Your SAP Systems?</h2>
       <p class="text-lg mb-8" style="color: var(--color-text-secondary);">Contact our team to discuss which services are right for your organization.</p>
-      <MagneticButton client:load href="/BubblesCorpDemo/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white text-lg shadow-lg" style="background:linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary)); box-shadow: 0 4px 24px var(--color-accent-glow);">
+      <MagneticButton client:load href="/BubblesCorpDemo/contact" className="btn-gradient">
         Request a Consultation
-        {iconArrow}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </MagneticButton>
     </div>
   </ScrollRevealSection>

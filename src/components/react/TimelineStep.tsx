@@ -18,7 +18,7 @@ export const TimelineStep: React.FC<TimelineStepProps> = ({
 }) => {
   return (
     <motion.div
-      className="flex gap-6"
+      className="flex flex-col items-center text-center"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -37,10 +37,10 @@ export const TimelineStep: React.FC<TimelineStepProps> = ({
         </div>
         {!isLast && (
           <motion.div
-            className="w-0.5 flex-1 mt-2 mb-2"
-            style={{ background: 'var(--color-accent)', opacity: 0.3 }}
+            className="w-0.5 mt-2 mb-2"
+            style={{ background: 'var(--color-accent)', opacity: 0.3, height: '40px' }}
             initial={{ height: 0 }}
-            whileInView={{ height: '100%' }}
+            whileInView={{ height: 40 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: delay + 0.3 }}
           />

@@ -51,7 +51,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
             style={{ backgroundImage: `url(${backgroundImage})` }}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(9,14,26,0.85)] via-[rgba(9,14,26,0.6)] to-[rgba(9,14,26,0.95)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(9,14,26,0.92)] via-[rgba(9,14,26,0.82)] to-[rgba(9,14,26,0.97)]" />
       </motion.div>
 
       <motion.div
@@ -68,7 +68,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       />
 
       <motion.div
-        className="relative z-10 container mx-auto px-6 text-center"
+        className="relative z-10 page-container text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
