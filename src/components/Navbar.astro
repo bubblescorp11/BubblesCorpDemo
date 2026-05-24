@@ -13,34 +13,43 @@ const navLinks = [
 ];
 ---
 
-<nav class="navbar">
+<a href="#main-content" class="skip-to-content">Skip to content</a>
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
   <div class="navbar-container">
     <div class="navbar-brand">
-      <a href="/BubblesCorpDemo/">
-        <span class="brand-icon">💼</span>
+      <a href="/BubblesCorpDemo/" aria-label="BubbleCorp Home">
+        <span class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+          </svg>
+        </span>
         <span class="brand-text">BubbleCorp</span>
       </a>
     </div>
-    
-    <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu">
+
+    <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </button>
-    
-    <ul class="navbar-menu" id="navbar-menu">
+
+    <ul class="navbar-menu" id="navbar-menu" role="menubar">
       {navLinks.map(link => (
-        <li>
-          <a 
+        <li role="none">
+          <a
             href={link.href}
+            role="menuitem"
             class={currentPath === link.href ? 'active' : ''}
+            aria-current={currentPath === link.href ? 'page' : undefined}
           >
             {link.label}
           </a>
         </li>
       ))}
-      <li class="cta-button-wrapper">
-        <a href="/BubblesCorpDemo/contact" class="cta-button">Get Started</a>
+      <li class="cta-button-wrapper" role="none">
+        <a href="/BubblesCorpDemo/contact" class="cta-button" role="menuitem">Get Started</a>
       </li>
     </ul>
   </div>
@@ -49,18 +58,23 @@ const navLinks = [
 <style>
   .navbar {
     background: transparent;
-    border-bottom: var(--glass-border);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.08);
     position: sticky;
     top: 0;
     z-index: var(--z-sticky);
-    backdrop-filter: blur(var(--glass-blur));
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    transition: background var(--animation-duration-base) var(--animation-timing);
+  }
+
+  .navbar.scrolled {
+    background: rgba(9, 14, 26, 0.85);
+    border-bottom-color: rgba(56, 189, 248, 0.15);
   }
 
   .navbar-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -81,15 +95,12 @@ const navLinks = [
     color: var(--color-accent);
   }
 
-  .brand-icon {
-    font-size: 1.5rem;
-  }
-
   .navbar-menu {
     display: flex;
     list-style: none;
     gap: var(--spacing-xl);
     align-items: center;
+    margin: 0;
   }
 
   .navbar-menu a {
@@ -97,6 +108,8 @@ const navLinks = [
     font-weight: var(--font-weight-medium);
     transition: all var(--animation-duration-base) var(--animation-timing);
     position: relative;
+    padding: var(--spacing-xs) 0;
+    text-decoration: none;
   }
 
   .navbar-menu a:hover,
@@ -111,7 +124,8 @@ const navLinks = [
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-accent);
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
+    border-radius: var(--radius-full);
     transition: width var(--animation-duration-base) var(--animation-timing);
   }
 
@@ -125,19 +139,19 @@ const navLinks = [
   }
 
   .cta-button {
-    background: var(--color-accent) !important;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary)) !important;
     color: white !important;
-    padding: var(--spacing-sm) var(--spacing-lg) !important;
+    padding: var(--spacing-sm) var(--spacing-xl) !important;
     border-radius: var(--radius-lg);
     font-weight: var(--font-weight-semibold);
     transition: all var(--animation-duration-base) var(--animation-timing);
-    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+    box-shadow: 0 4px 16px var(--color-accent-glow);
+    text-decoration: none;
   }
 
   .cta-button:hover {
-    background: var(--color-accent-light) !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+    box-shadow: 0 8px 28px var(--color-accent-glow);
   }
 
   .navbar-toggle {
@@ -147,12 +161,13 @@ const navLinks = [
     border: none;
     cursor: pointer;
     gap: 5px;
+    padding: var(--spacing-sm);
   }
 
   .navbar-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: var(--color-text);
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
     border-radius: var(--radius-full);
     transition: all var(--animation-duration-base) var(--animation-timing);
   }
@@ -170,20 +185,22 @@ const navLinks = [
       flex-direction: column;
       gap: var(--spacing-md);
       padding: var(--spacing-lg);
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(var(--glass-blur));
-      border-bottom: var(--glass-border);
+      background: rgba(9, 14, 26, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
       max-height: 0;
       overflow: hidden;
-      transition: max-height var(--animation-duration-base) var(--animation-timing);
+      transition: max-height 0.35s ease, padding 0.35s ease;
     }
 
     .navbar-menu.active {
-      max-height: 400px;
+      max-height: 500px;
+      padding: var(--spacing-lg);
     }
 
     .navbar-menu a {
       display: block;
+      padding: var(--spacing-sm) 0;
     }
 
     .cta-button-wrapper {
@@ -197,7 +214,7 @@ const navLinks = [
     }
 
     .navbar-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(10px, 10px);
+      transform: rotate(45deg) translate(5px, 5px);
     }
 
     .navbar-toggle.active span:nth-child(2) {
@@ -205,7 +222,7 @@ const navLinks = [
     }
 
     .navbar-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -7px);
+      transform: rotate(-45deg) translate(5px, -5px);
     }
   }
 </style>
@@ -213,20 +230,36 @@ const navLinks = [
 <script>
   const toggle = document.getElementById('navbar-toggle');
   const menu = document.getElementById('navbar-menu');
+  const nav = document.querySelector('.navbar');
 
   if (toggle && menu) {
     toggle.addEventListener('click', () => {
-      toggle?.classList.toggle('active');
-      menu?.classList.toggle('active');
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.classList.toggle('active');
+      menu.classList.toggle('active');
     });
 
-    // Close menu when a link is clicked
-    const links = menu.querySelectorAll('a');
-    links.forEach(link => {
+    menu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        toggle?.classList.remove('active');
-        menu?.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('active');
+        menu.classList.remove('active');
       });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('active')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('active');
+        menu.classList.remove('active');
+      }
+    });
+  }
+
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
     });
   }
 </script>

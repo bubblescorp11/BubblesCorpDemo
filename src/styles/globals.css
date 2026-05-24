@@ -6,18 +6,18 @@
 
 :root {
   /* Colors - Frosted Clarity Palette */
-  --color-primary: #0f172a;      /* Dark navy background */
+  --color-primary: #090e1a;      /* Dark navy background */
   --color-secondary: #1e3a8a;    /* Deep blue */
-  --color-accent: #06b6d4;       /* Cyan accent */
-  --color-accent-light: #22d3ee; /* Light cyan */
+  --color-accent: #38bdf8;       /* Cyan accent */
+  --color-accent-light: #7dd3fc; /* Light cyan */
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
 
   /* Backgrounds */
-  --color-bg: #0f172a;
-  --color-bg-secondary: #1e3a8a;
-  --color-bg-tertiary: #334155;
+  --color-bg: #090e1a;
+  --color-bg-secondary: #111a2e;
+  --color-bg-tertiary: #1e293b;
   
   /* Text */
   --color-text: #f1f5f9;
@@ -528,3 +528,5 @@ select:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary);
 }
+
+.btn-gradient{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;border-radius:var(--radius-xl);font-weight:var(--font-weight-bold);color:#fff;font-size:var(--text-lg);background:linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));box-shadow:0 4px 24px var(--color-accent-glow);text-decoration:none;transition:all var(--animation-duration-base) var(--animation-timing)}.btn-gradient:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--color-accent-glow)}

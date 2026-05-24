@@ -1,298 +1,60 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
-import HeroSection from '../components/HeroSection.astro';
-import ContactForm from '../components/ContactForm.tsx';
 import Footer from '../components/Footer.astro';
+import ParallaxHero from '../components/react/ParallaxHero.tsx';
+import ScrollRevealSection from '../components/react/ScrollRevealSection.tsx';
+import GlowCard from '../components/react/GlowCard.tsx';
+import IconFeature from '../components/react/IconFeature.tsx';
+import ContactForm from '../components/ContactForm.tsx';
+import { iconMail, iconPhone, iconMapPin, iconClock } from '../components/react/icons';
 ---
 
 <MainLayout title="Contact BubbleCorp - Get in Touch" description="Contact BubbleCorp for SAP Group Reporting services. Reach out to our team for a consultation.">
   <Navbar currentPath="/BubblesCorpDemo/contact" />
 
-  <HeroSection 
+  <ParallaxHero
+    client:load
     title="Get in Touch"
     subtitle="Contact Us"
     description="We'd love to hear from you. Let's discuss how we can help transform your SAP strategy."
-    ctaText=""
-    backgroundImage="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop"
+    backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop"
   />
 
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <div class="container">
-      <div class="contact-grid">
-        <!-- Contact Info -->
-        <div class="contact-info">
-          <h2>Contact Information</h2>
-          <p>Reach out to us through any of these channels. We're here to help!</p>
-
-          <div class="info-item">
-            <div class="info-icon">✉️</div>
-            <div class="info-content">
-              <h3>Email</h3>
-              <p>
-                <a href="mailto:info@bubblecorp.com">info@bubblecorp.com</a>
-              </p>
-              <p class="info-subtext">Sales: <a href="mailto:sales@bubblecorp.com">sales@bubblecorp.com</a></p>
-              <p class="info-subtext">Support: <a href="mailto:support@bubblecorp.com">support@bubblecorp.com</a></p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon">📞</div>
-            <div class="info-content">
-              <h3>Phone</h3>
-              <p>
-                <a href="tel:+1-555-123-4567">+1 (555) 123-4567</a>
-              </p>
-              <p class="info-subtext">Monday - Friday: 9 AM - 6 PM EST</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon">📍</div>
-            <div class="info-content">
-              <h3>Office</h3>
-              <p>123 Financial District Blvd<br />New York, NY 10001</p>
-              <p class="info-subtext">By appointment</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon">🕐</div>
-            <div class="info-content">
-              <h3>Business Hours</h3>
-              <p>
-                Monday - Friday: 9:00 AM - 6:00 PM<br />
-                Saturday & Sunday: Closed
-              </p>
-              <p class="info-subtext">24/7 emergency support available</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="form-wrapper">
-          <h2>Send us a Message</h2>
-          <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+  <ScrollRevealSection client:visible variant="default">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+      <div class="lg:col-span-2 space-y-4">
+        <h2 class="text-3xl font-bold mb-6" style="color: var(--color-text);">Contact Information</h2>
+        <p class="mb-8" style="color: var(--color-text-secondary);">Reach out to us through any of these channels. We're here to help!</p>
+        <IconFeature client:visible icon={iconMail} title="Email" description="info@bubblecorp.com" delay={0} />
+        <IconFeature client:visible icon={iconPhone} title="Phone" description="+1 (555) 123-4567" delay={0.1} />
+        <IconFeature client:visible icon={iconMapPin} title="Office" description="123 Financial District Blvd, New York, NY 10001" delay={0.2} />
+        <IconFeature client:visible icon={iconClock} title="Business Hours" description="Mon-Fri: 9:00 AM - 6:00 PM" delay={0.3} />
+      </div>
+      <div class="lg:col-span-3">
+        <div class="p-8 rounded-2xl" style="background: rgba(17, 26, 46, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(56, 189, 248, 0.1);">
+          <h2 class="text-2xl font-bold mb-2" style="color: var(--color-text);">Send us a Message</h2>
+          <p class="mb-6" style="color: var(--color-text-secondary);">Fill out the form below and we'll get back to you as soon as possible.</p>
           <ContactForm client:load />
         </div>
       </div>
     </div>
-  </section>
+  </ScrollRevealSection>
 
-  <!-- FAQ Section -->
-  <section class="faq-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Frequently Asked Questions</h2>
-        <p>Common questions about our services</p>
-      </div>
-
-      <div class="faq-grid">
-        <div class="faq-item">
-          <h3>What is SAP Group Reporting?</h3>
-          <p>
-            SAP Group Reporting is a solution for financial consolidation and reporting that helps organizations consolidate data from multiple subsidiaries and entities to create unified financial reports compliant with IFRS, GAAP, and other accounting standards.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>How long does implementation typically take?</h3>
-          <p>
-            Implementation timelines vary based on complexity and scope. Typically, a standard SAP Group Reporting implementation takes 3-6 months. We'll provide a detailed timeline during the planning phase.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Do you offer post-implementation support?</h3>
-          <p>
-            Yes, we provide comprehensive post-implementation support including system monitoring, maintenance, performance optimization, and user support to ensure your systems run smoothly.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Can you help migrate from legacy systems?</h3>
-          <p>
-            Absolutely. We have extensive experience migrating from legacy systems to modern SAP solutions. Data migration, system integration, and change management are all part of our expertise.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>What about training for our team?</h3>
-          <p>
-            We provide comprehensive training programs tailored to your team's needs, including functional training, technical training, and ongoing support workshops to ensure successful adoption.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Is your solution scalable?</h3>
-          <p>
-            Yes, our solutions are designed to scale with your business. Whether you're a mid-sized organization or enterprise, we can tailor solutions that grow with your needs.
-          </p>
-        </div>
-      </div>
+  <ScrollRevealSection client:visible variant="gradient">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4" style="color: var(--color-text);">Frequently Asked Questions</h2>
+      <p class="text-lg max-w-xl mx-auto" style="color: var(--color-text-secondary);">Common questions about our services</p>
     </div>
-  </section>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <GlowCard client:visible title="What is SAP Group Reporting?" description="SAP Group Reporting is a solution for financial consolidation and reporting that helps organizations consolidate data from multiple subsidiaries." delay={0} />
+      <GlowCard client:visible title="How long does implementation take?" description="Typically 3-6 months based on complexity and scope. We'll provide a detailed timeline during the planning phase." delay={0.1} />
+      <GlowCard client:visible title="Do you offer post-implementation support?" description="Yes, we provide comprehensive support including monitoring, maintenance, performance optimization, and user support." delay={0.2} />
+      <GlowCard client:visible title="Can you help migrate from legacy systems?" description="Absolutely. We have extensive experience migrating from legacy systems to modern SAP solutions." delay={0.3} />
+      <GlowCard client:visible title="What about training for our team?" description="We provide comprehensive training programs tailored to your team's needs, including functional and technical training." delay={0.4} />
+      <GlowCard client:visible title="Is your solution scalable?" description="Yes, our solutions are designed to scale with your business from mid-size to enterprise." delay={0.5} />
+    </div>
+  </ScrollRevealSection>
 
   <Footer />
 </MainLayout>
-
-<style>
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
-  }
-
-  .contact-section {
-    padding: var(--spacing-3xl) 0;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%);
-  }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-3xl);
-  }
-
-  .contact-info h2,
-  .form-wrapper h2 {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-accent);
-    font-size: var(--text-3xl);
-  }
-
-  .contact-info > p,
-  .form-wrapper > p {
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-2xl);
-  }
-
-  .info-item {
-    display: flex;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-2xl);
-    padding-bottom: var(--spacing-2xl);
-    border-bottom: var(--glass-border);
-  }
-
-  .info-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .info-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-  }
-
-  .info-content h3 {
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text);
-  }
-
-  .info-content p {
-    color: var(--color-text-secondary);
-    margin: var(--spacing-sm) 0;
-  }
-
-  .info-content a {
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: color var(--animation-duration-base) var(--animation-timing);
-  }
-
-  .info-content a:hover {
-    color: var(--color-accent-light);
-  }
-
-  .info-subtext {
-    font-size: var(--text-sm);
-    color: var(--color-text-tertiary) !important;
-  }
-
-  .form-wrapper {
-    backdrop-filter: blur(var(--glass-blur));
-    background: rgba(255, 255, 255, var(--glass-opacity));
-    border: var(--glass-border);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    box-shadow: var(--glass-shadow);
-  }
-
-  .faq-section {
-    padding: var(--spacing-3xl) 0;
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: var(--spacing-3xl);
-  }
-
-  .section-header h2 {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-accent);
-    font-size: var(--text-4xl);
-  }
-
-  .section-header p {
-    color: var(--color-text-secondary);
-    font-size: var(--text-lg);
-  }
-
-  .faq-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-xl);
-  }
-
-  .faq-item {
-    backdrop-filter: blur(var(--glass-blur));
-    background: rgba(255, 255, 255, var(--glass-opacity));
-    border: var(--glass-border);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    box-shadow: var(--glass-shadow);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  .faq-item:hover {
-    background: rgba(255, 255, 255, calc(var(--glass-opacity) + 0.05));
-    border-color: rgba(6, 182, 212, 0.3);
-    box-shadow: var(--glass-shadow-hover);
-    transform: translateY(-4px);
-  }
-
-  .faq-item h3 {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text);
-  }
-
-  .faq-item p {
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-    margin: 0;
-  }
-
-  @media (max-width: 768px) {
-    .contact-section,
-    .faq-section {
-      padding: var(--spacing-2xl) 0;
-    }
-
-    .contact-grid {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-2xl);
-    }
-
-    .form-wrapper {
-      padding: var(--spacing-lg);
-    }
-
-    .faq-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
