@@ -11,6 +11,12 @@ export default defineConfig({
   output: 'static',
 
   vite: {
+    resolve: {
+      alias: {
+        '/BubblesCorpDemo/@react-refresh': 'react-refresh/runtime',
+      },
+    },
+
     ssr: {
       external: ['react', 'react-dom']
     },
