@@ -12,9 +12,12 @@ export default defineConfig({
 
   vite: {
     resolve: {
-      alias: {
-        '/BubblesCorpDemo/@react-refresh': 'react-refresh/runtime',
-      },
+      alias: [
+        {
+          find: /^\/BubblesCorpDemo\/@react-refresh$/,
+          replacement: '/@react-refresh',
+        },
+      ],
     },
 
     ssr: {
